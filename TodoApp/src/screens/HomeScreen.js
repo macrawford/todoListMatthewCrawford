@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TextInput, StyleSheet} from 'react-native';
+import {View, Text, TextInput, StyleSheet, Button} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 
 const HomeScreen = () => {
@@ -10,6 +10,15 @@ const HomeScreen = () => {
       <Text>Add Todos</Text>
       <TextInput
       placeholder="Enter to-do here"
+      />
+      <Button
+      title="Add to-do"
+      onPress={() => dispatch({ type: 'ADD_TODO'})}
+      />
+      {/*  DELETE THE BELOW BEFORE FINISHING */}
+      <Button
+      title="Clear to-dos for development ease"
+      onPress={() => dispatch({ type: 'CLEAR_TODOS'})}
       />
       <View>
         {todos.map((todo) => <Text>{todo}</Text>)}
