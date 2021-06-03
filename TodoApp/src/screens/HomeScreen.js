@@ -25,9 +25,13 @@ const HomeScreen = () => {
       <TextInput placeholder="Enter to-do here" onChangeText={(e) => handleChangeTodo(e)}/>
       <Button title="Add to-do" onPress={() => dispatch({ type: 'ADD_TODO', payload: {description: currentTodo}})}/>
       {/*  DELETE THE BELOW BEFORE FINISHING */}
-      <Button title="Clear to-dos for development ease" onPress={() => dispatch({ type: 'CLEAR_TODOS'})}/>
+      <Button title="Clear all to-do's" onPress={() => dispatch({ type: 'CLEAR_TODOS'})}/>
       <View>
-        {todos.map((todo) => <Text key={todo.id}>{todo.description}</Text>)}
+        {todos.map((todo) =>
+          <View>
+            <Text key={todo.id}>{todo.description}</Text>
+            <Button title="Delete To-do" onPress={() => dispatch({ type: 'DELETE_TODO', payload: {id: todo.id}})} />
+          </View>)}
       </View>
     </View>
   )

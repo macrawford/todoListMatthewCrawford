@@ -1,6 +1,7 @@
 import { GET_TODOS } from '../actions/todos';
 import { ADD_TODO } from '../actions/addTodo';
 import { CLEAR_TODOS } from '../actions/clearTodos';
+import { DELETE_TODO } from '../actions/deleteTodo';
 
 const initialState = [];
 // change initial state to empty array eventually
@@ -19,6 +20,8 @@ export const getTodos = (state = initialState, action) => {
           completed: false
         }
       ]
+    case DELETE_TODO:
+      return state.filter(todo => todo.id !== action.payload.id)
     case CLEAR_TODOS:
       return initialState;
     default:
