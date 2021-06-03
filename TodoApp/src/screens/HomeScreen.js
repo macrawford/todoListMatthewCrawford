@@ -28,9 +28,10 @@ const HomeScreen = () => {
       <Button title="Clear all to-do's" onPress={() => dispatch({ type: 'CLEAR_TODOS'})}/>
       <View>
         {todos.map((todo) =>
-          <View>
-            <Text key={todo.id}>{todo.description}</Text>
+          <View key={todo.id}>
+            <Text>{todo.description}{todo.completed ? <Text> Completed</Text> : <Text> Not Completed</Text>}</Text>
             <Button title="Delete To-do" onPress={() => dispatch({ type: 'DELETE_TODO', payload: {id: todo.id}})} />
+            <Button title="Toggle completed" onPress={() => dispatch({ type: 'TOGGLE_COMPLETED', payload: {id: todo.id, completed: todo.completed}})}/>
           </View>)}
       </View>
     </View>
