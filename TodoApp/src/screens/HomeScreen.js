@@ -1,8 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {View, Text, TextInput, StyleSheet} from 'react-native';
+import {useSelector, useDispatch} from 'react-redux';
 
 const HomeScreen = () => {
-  const [todos, setTodos] = useState(['Do laundry', 'grocery shop'])
+  const todos = useSelector(state => state)
+  const dispatch = useDispatch();
   return (
     <View style={styles.container}>
       <Text>Add Todos</Text>
@@ -10,11 +12,7 @@ const HomeScreen = () => {
       placeholder="Enter to-do here"
       />
       <View>
-        {todos.map((todo) => {
-          return (
-            <Text>{todo}</Text>
-          )
-        })}
+        {todos.map((todo) => <Text>{todo}</Text>)}
       </View>
     </View>
   )
