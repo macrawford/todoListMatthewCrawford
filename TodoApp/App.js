@@ -6,12 +6,14 @@ import {store} from './src/store/index.js';
 const App = () => {
   return (
     <Provider store={store}>
-      <HomeScreen />
+      <HomeScreen/>
     </Provider>
   )
 };
 
 export default App;
+
+//      DELETE THE BELOW BEFORE SUBMITTING
 
 // import React from 'react';
 // import type {Node} from 'react';
