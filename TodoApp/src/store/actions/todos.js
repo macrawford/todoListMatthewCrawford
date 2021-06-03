@@ -4,4 +4,4 @@ export const getTodos = () => {
   return async dispatch => {
     {type: GET_TODOS}
   }
-}
+};
