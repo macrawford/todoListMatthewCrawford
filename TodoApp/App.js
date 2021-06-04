@@ -2,8 +2,18 @@ import React from 'react';
 import HomeScreen from './src/screens/HomeScreen.js';
 import {Provider} from 'react-redux';
 import {store} from './src/store/index.js';
+import persistor from './src/store/index.js';
+import { PersistGate } from 'redux-persist/lib/integration/react';
+
 
 const App = () => {
+  // return (
+  //   <Provider store={store}>
+  //     <PersistGate loading={null} persistor={persistor}>
+  //       <HomeScreen/>
+  //     </PersistGate>
+  //   </Provider>
+  // )
   return (
     <Provider store={store}>
       <HomeScreen/>

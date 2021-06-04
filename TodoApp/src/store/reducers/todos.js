@@ -5,6 +5,8 @@ import { DELETE_TODO } from '../actions/deleteTodo';
 import { TOGGLE_COMPLETED } from '../actions/toggleCompleted';
 import { EDIT_TODO } from '../actions/editTodo';
 
+// SPLIT INTO MULTIPLE FILES???
+
 const initialState = [];
 
 let lastId = 0;
