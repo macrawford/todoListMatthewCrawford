@@ -10,18 +10,8 @@ export const addTodo = async (value) => {
     await AsyncStorage.setItem(id.toString(), value)
     usedKeys.push(id.toString())
     id++;
-    alert('Data successfully saved')
   } catch (e) {
     console.log('e: ', e)
     alert('Failed to save data')
   }
 };
-
-// export const addTodo = (text) => {
-//   return {qqq
-//     type: ADD_TODO,
-//     payload: {
-//       description: ''
-//     }
-//   }
-// };

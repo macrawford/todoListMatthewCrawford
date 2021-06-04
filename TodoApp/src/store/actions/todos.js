@@ -11,9 +11,3 @@ export const getTodos = async () => {
     console.log('e: ', e)
   }
 }
-
-// export const getTodos = () => {
-//   return async dispatch => {
-//     {type: GET_TODOS}
-//   }
-// };
