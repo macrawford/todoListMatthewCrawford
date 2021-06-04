@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text, TextInput, StyleSheet, Button} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // BREAK TODO HEADER, INPUT BOX/SUBMIT BUTTON, AND TODOS WITH THEIR CORRESPONDING EDIT/DELETE, ETC AS THEIR OWN COMPONENTS
 
