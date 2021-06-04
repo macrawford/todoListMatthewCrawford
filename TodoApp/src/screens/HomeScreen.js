@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {View, Text, TextInput, StyleSheet, Button, ScrollView} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {getTodos} from '../store/actions/todos.js';
-import {addTodo} from '../store/actions/addTodo.js'
+import {addTodo, usedKeys, id} from '../store/actions/addTodo.js'
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // BREAK TODO HEADER, INPUT BOX/SUBMIT BUTTON, AND TODOS WITH THEIR CORRESPONDING EDIT/DELETE, ETC AS THEIR OWN COMPONENTS
@@ -15,8 +15,11 @@ const HomeScreen = () => {
     getTodos()
     .then((response) => {
       response.map((pair) => {
-        console.log('pair value: ', pair[0], pair[1])
-        dispatch({ type: 'ADD_TODO', payload: {id: Number(pair[0]), description: pair[1]}});
+        console.log('pair value: ', pair[0], ', ', pair[1])
+        if (Number(pair[0])) {
+          console.log('number! ', pair[0], pair[1])
+          dispatch({ type: 'ADD_TODO', payload: {id: Number(pair[0]), description: pair[1]}});
+        }
       })
     })
     .catch((err) => {
@@ -28,24 +31,20 @@ const HomeScreen = () => {
   const handleChangeTodo = (e) => {
     setCurrentTodo(e)
   };
-  // const addTodo = (text) => {
-  //   return {
-  //     type: 'ADD_TODO',
-  //     text
-  //   }
-  // }
+
   const handleEdit = (id, description) => {
     setCurrentTodo(description);
     dispatch({ type: 'DELETE_TODO', payload: {id: id}});
   }
   const handleSubmit = () => {
-    dispatch({ type: 'ADD_TODO', payload: {description: currentTodo}});
-    addTodo(currentTodo)
-    setCurrentTodo('');
+    if (currentTodo !== '') {
+      addTodo(currentTodo);
+      setCurrentTodo('');
+    }
   }
   return (
-    <ScrollView >
-      <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
+      <View style={styles.view}>
         <Text>
           Add Todos
         </Text>
@@ -69,9 +68,12 @@ const HomeScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    marginTop: 20
+  },
+  view: {
+    flex: 1
   }
 })
 

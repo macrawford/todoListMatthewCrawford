@@ -4,8 +4,8 @@ import {usedKeys} from './addTodo'
 
 export const getTodos = async () => {
   try {
-    // const keys = await AsyncStorage.getAllKeys(usedKeys);
-    const value = await AsyncStorage.multiGet(usedKeys)
+    const keys = await AsyncStorage.getAllKeys();
+    const value = await AsyncStorage.multiGet(keys)
     return value;
   } catch(e) {
     console.log('e: ', e)

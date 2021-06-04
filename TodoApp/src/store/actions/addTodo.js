@@ -1,7 +1,7 @@
 export const ADD_TODO = 'ADD_TODO';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-let id = 0;
+export let id = 0;
 export var usedKeys = [];
 
 
