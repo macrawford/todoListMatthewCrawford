@@ -17,13 +17,21 @@ const HomeScreen = () => {
       text
     }
   }
+  const handleEdit = (id, description) => {
+    setCurrentTodo(description);
+    dispatch({ type: 'DELETE_TODO', payload: {id: id}});
+  }
+  const handleSubmit = () => {
+    dispatch({ type: 'ADD_TODO', payload: {description: currentTodo}});
+    setCurrentTodo('');
+  }
   return (
     <View style={styles.container}>
       <Text>
         Add Todos
       </Text>
-      <TextInput placeholder="Enter to-do here" onChangeText={(e) => handleChangeTodo(e)}/>
-      <Button title="Add to-do" onPress={() => dispatch({ type: 'ADD_TODO', payload: {description: currentTodo}})}/>
+      <TextInput placeholder="Enter to-do here" value={currentTodo} autoCorrect={false} onChangeText={(e) => handleChangeTodo(e)}/>
+      <Button title="Add to-do" onPress={() => handleSubmit()}/>
       {/*  DELETE THE BELOW BEFORE FINISHING */}
       <Button title="Clear all to-do's" onPress={() => dispatch({ type: 'CLEAR_TODOS'})}/>
       <View>
@@ -32,6 +40,7 @@ const HomeScreen = () => {
             <Text>{todo.description}{todo.completed ? <Text> Completed</Text> : <Text> Not Completed</Text>}</Text>
             <Button title="Delete To-do" onPress={() => dispatch({ type: 'DELETE_TODO', payload: {id: todo.id}})} />
             <Button title="Toggle completed" onPress={() => dispatch({ type: 'TOGGLE_COMPLETED', payload: {id: todo.id, completed: todo.completed}})}/>
+            <Button title="Edit To-Do" onPress={() => handleEdit(todo.id, todo.description)}/>
           </View>)}
       </View>
     </View>

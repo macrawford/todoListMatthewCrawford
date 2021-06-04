@@ -3,6 +3,7 @@ import { ADD_TODO } from '../actions/addTodo';
 import { CLEAR_TODOS } from '../actions/clearTodos';
 import { DELETE_TODO } from '../actions/deleteTodo';
 import { TOGGLE_COMPLETED } from '../actions/toggleCompleted';
+import { EDIT_TODO } from '../actions/editTodo';
 
 const initialState = [];
 
@@ -33,6 +34,8 @@ export const getTodos = (state = initialState, action) => {
         }
         return todo
       })
+    case EDIT_TODO:
+
     case CLEAR_TODOS:
       return initialState;
     default:
